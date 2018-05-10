@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Post Page</title>
+</head>
+<body ng-controller="AddPostCtrl">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<div class="container-fluid">
+		<a href="#" class="navbar-brand mb-0 h1">WebApp</a>
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#/welcome">Home</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="#/addPost">Add Post</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Logout</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<div class="container">
+	<form role="form" name="postForm" ng-submit="createPost()" novalidate="">
+		<legend>Create Post</legend>
+		<div class="row">
+			<div class="col-md-5">
+				<div class="form-group" ng-class="{'has-error': postForm.titleTxt.$invalid && postForm.titleTxt.$touched}">
+					<label for="titleTxt">Post Title</label>
+					<input type="text" name="titleTxt" class="form-control" placeholder="Title" ng-model="article.titleTxt" ng-minlength = "5" required="">
+					<small class="help-block" ng-show="postForm.titleTxt.$error.minlength && postForm.titleTxt.$touched">Please enter a valid title for post.</small>
+				</div>
+				<div class="form-group" ng-class="{'has-error': postForm.postTxt.$invalid && postForm.postTxt.$touched}">
+					<label for="postTxt">Post</label>
+					<textarea name="postTxt" class="form-control" placeholder="Post" ng-model="article.postTxt" ng-minlength = "20" required=""></textarea>
+					<small class="help-block" ng-show="postForm.postTxt.$error.minlength && postForm.postTxt.$touched">Please enter a valid post.</small>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary" ng-disabled="postForm.$invalid">Add Post</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

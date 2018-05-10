@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Test</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style type="text/css">
+  .center-div {
+    margin:auto;
+    width: 50%;
+  }
+</style>
+</head>
+
+<body>
+  <!-- Nav Bar -->
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper blue darken-4">
+        <img src="logo.png" style="max-height: 60px">  
+        <a href="#!" class="brand-logo white-text text-darken-2">Police Department</a>
+        <form class="right">
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#home" class="white-text text-darken-2">Home</a></li>
+          <li><a href="#about" class="white-text text-darken-2">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="Out There 1920x1080.jpg"> <!-- random image -->
+        <div class="caption left-align">
+          <h1 class="header center deep-orange-text text-darken-3">VISION</h1>
+          <h5 class="light grey-text text-lighten-3">Imploring the aid of the Almighty, by 2030, We shall be a highly capable, effective and credible police service working in partnership with a responsive community towards the attainment of a safer place to live, work and do business.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="Out There 1920x1080.jpg"> <!-- random image -->
+        <div class="caption left-align">
+          <h1 class="header center deep-orange-text text-darken-3">MISSION</h1>
+          <h5 class="light grey-text text-lighten-3">The PNP shall enforce the law, prevent and control crimes, maintain peace and order, and ensure public safety and internal security with the active support of the community.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row card-panel blue darken-4">
+    <h1 class="header white-text text-darken-2">Headlines</h1>
+  </div>
+
+  <!-- date picker -->
+  <input type="text" id="input_date" class="datepicker" placeholder="Select a date...">
+  <!-- <button onclick="">Submit</button> -->
+  <!-- calendar -->
+  <!-- <iframe src="calendar.html"></iframe> -->
+
+  <!--Activities Card -->
+  <div class="center-div"  id="summary">
+    <!-- diri ipost ang na retrive na data sa db -->
+    <!-- ang previous source code diri, don't worry. naa ra sa retrieve.js (var large_string)-->
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer blue darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Cebu Police Department</h5>
+          <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Hotline Number</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2014 Copyright Text
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAV5_boloKccG7ssX0Vz5Y0mdKXGDiANsk",
+      authDomain: "c126-18f62.firebaseapp.com",
+      databaseURL: "https://c126-18f62.firebaseio.com",
+      projectId: "c126-18f62",
+      storageBucket: "c126-18f62.appspot.com",
+      messagingSenderId: "5335802945"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <!-- retrive news from the db -->
+  <script src="retrieve.js"></script> 
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <!-- <script src="js/getAnnouncement.js"></script> -->
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider').slider();
+    });
+
+    var $input = $('.datepicker').pickadate()
+
+
+// Use the picker object directly.
+var picker = $input.pickadate('picker')
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>testing</title>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+
+  <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+</head>
+<body>
+	<div class="signup mainDiv" align="right">
+    <h1 class="signup-title" align="left">Add Announcements</h1>
+    <!-- <p id="signup-success" class="text-success"></p> -->
+    <!-- <p id="signup-error" class="text-danger"></p> -->
+    <form class="" id="signup-form" role="form" onsubmit="return saveAnnouncement(this)">
+        <input class="form-control" name="title" placeholder="Enter title of the event here.." required>
+        <input type = "time" class="timepicker" name="time" placeholder="Enter time here.." required>
+        <input type="date" class="datepicker" name="date" placeholder="Enter date here.." required>
+        <input class="form-control" name="place" placeholder="Enter place here.." required>
+        <textarea class="materialize-textarea" name="details" placeholder="Enter details here.." required></textarea>
+        <button class="btn btn-success" id="signup-button" type="submit" >Add Announcement</button>
+    </form>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAV5_boloKccG7ssX0Vz5Y0mdKXGDiANsk",
+    authDomain: "c126-18f62.firebaseapp.com",
+    databaseURL: "https://c126-18f62.firebaseio.com",
+    projectId: "c126-18f62",
+    storageBucket: "c126-18f62.appspot.com",
+    messagingSenderId: "5335802945"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+    function saveAnnouncement(formObj) {
+
+      window.alert("Added Announcement! Refresh the page to add new Announcement.");
+        // Store emails to firebase
+        // var myFirebaseRef = new Firebase("https://c126-18f62.firebaseio.com/");
+
+        var myFirebaseRef = firebase.database().ref();
+
+
+        myFirebaseRef.child('news').push({
+          // priority makes it easier to sort the announcements in descending order based on the time it was added
+          priority: 0 - Date.now(),
+          title: formObj.title.value,
+          time: formObj.time.value,
+          date: formObj.date.value,
+          place: formObj.place.value,
+          details: formObj.details.value,
+        });
+        // signupBtn.disabled = true;
+        return false;
+    }
+</script>
+
+</body>
+</html>

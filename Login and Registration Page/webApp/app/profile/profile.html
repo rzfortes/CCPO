@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page</title>
+</head>
+<body ng-controller="ProfileCtrl">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<a href="#" class="navbar-brand mb-0 h1">CCPO</a>
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<a class="nav-link" href="#/profile">Home</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#/addReport">Add Report</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#/showReport">Show own Reports</a>
+		</li>
+		<li class="nav-item" ng-click=logout()>
+			<a class="nav-link" href="#">Logout</a>
+		</li>
+	</ul>
+</nav>
+
+<div class="container" style="margin-bottom: 20px; margin-top: 20px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div>
+				<h3>Welcome to your profile, {{username}}</h3>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<!-- profile data -->
+<div class="container">
+	<div class="card-columns">
+		<div class="col-md-12 card">
+			<div class="card-body">
+				<h5 class="card-title">User details<br><br></h5>
+				<h6 class="card-title">Rank</h6>
+				<p class="card-text">&nbsp;&nbsp;{{rank}}</p>
+				<h6 class="card-title">Substation</h6>
+				<p class="card-text">&nbsp;&nbsp;{{substation}}</p>
+				<h6 class="card-title">Superior Officer</h6>
+				<p class="card-text">&nbsp;&nbsp;{{superiorOfficer}}</p>
+			</div>
+		</div>
+		<!-- reports -->
+		<div class="col-md-12 card">
+			<div class="card-body">
+				<h5 class="card-title">Reports<br></h5>
+				<p class="card-title"><a href="#/showReport">Show reports</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
