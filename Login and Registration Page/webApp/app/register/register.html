@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Page</title>
+
+  <!-- TO LOAD ADMIN STUFF, COPY FROM HERE -->
+  <!-- CSS Files -->
+  <link href="../dashboard-assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../dashboard-assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+  <!-- SCRIPTS -->
+  <!--   Core JS Files   -->
+  <script src="dashboard-assets/js/core/jquery.3.2.1.min.js" type="text/javascript" defer></script>
+  <script src="dashboard-assets/js/core/popper.min.js" type="text/javascript" defer></script>
+  <script src="dashboard-assets/js/core/bootstrap.min.js" type="text/javascript" defer></script>
+  <!-- END COPY FOR ADMIN STUFF -->
+</head>
+<body ng-controller="RegisterCtrl">
+
+
+<!-- wrapper -->
+  <div class="wrapper">
+  <!-- COPY FROM HERE FOR MENU -->
+    <!-- sidebar -->
+    <div class="sidebar" data-color="blue">
+        <!--
+    Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="#" class="simple-text">
+            <h3>CCPO</h3>
+          </a>
+        </div>
+        <ul class="nav">
+          <li>
+            <a class="nav-link" href="#/admin">
+              <i class="nc-icon nc-chart-pie-35"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#/profile">
+              <i class="nc-icon nc-single-copy-04"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link active" href="#/addAnnouncement">
+              <i class="nc-icon nc-paper-2"></i>
+              <p>Add Announcements</p>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#/register">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Register an Officer</p>
+            </a>
+          </li>
+          <li class="nav-item " >
+            <a class="nav-link" href="#/showComplaint">
+              <i class="nc-icon nc-notes"></i>
+              <p>Complaints</p>
+            </a>
+          </li>
+
+          <li class="nav-item active-pro" ng-click=logout()>
+            <a class="nav-link active" href="#">
+              <i class="nc-icon nc-button-power"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end sidebar -->
+
+    <div class="main-panel">
+      <nav class="navbar navbar-expand-lg" color-on-scroll="500">
+        <div class=" container-fluid  ">
+          <h3>Register an Officer <a class="navbar-brand" href="#/profile">&lt{{username}}&gt</a></h3>
+          <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar burger-lines"></span>
+            <span class="navbar-toggler-bar burger-lines"></span>
+            <span class="navbar-toggler-bar burger-lines"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+  <!-- STOP HERE FOR MENU -->
+
+
+    <!-- PUT ALL CONTENTS HERE -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row" >
+            <div class="col-md-2"></div>
+            <!-- show report card -->
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header ">
+                	<legend>Register an Officer</legend>
+                    <hr>
+                </div>
+                <div class="card-body " style="margin-left: 20px;">
+            		<form role="form" name="regForm" novalidate="">
+						<!-- name -->
+						<div class="form-group" ng-class="{'has-error': regForm.name.$invalid && regForm.name.$touched}">
+							<label for="name">Name</label>
+							<input type="text" name="name" ng-model="user.name" class="form-control" placeholder="First name Last name" required="" />
+							<small class="help-block" ng-show="regForm.name.$invalid && regForm.name.$touched">Please enter a Name</small>
+						</div>
+
+						<!-- rank -->
+						<div class="form-group" ng-class="{'has-error': regForm.rank.$invalid && regForm.rank.$touched}">
+							<label for="rank">Rank</label>
+							<!-- <input type="text" name="rank" ng-model="user.rank" class="form-control" placeholder="Rank" required="" /> -->
+							<select name="rank" ng-model="user.rank" class="form-control" required="">
+						      <option>Police Commissioned Officers</option>
+						      <option>Director General</option>
+						      <option>Deputy Director General</option>
+						      <option>Director</option>
+						      <option>Chief Superintendent</option>
+						      <option>Senior Superintendent</option>
+						      <option>Superintendent</option>
+						      <option>Chief Inspector</option>
+						      <option>Senior Inspector</option>
+						      <option>Inspector</option>
+						      <option>Police Non-Commissioned Officers</option>
+						      <option>Senior Police Officer IV</option>
+						      <option>Senior Police Officer III</option>
+						      <option>Senior Police Officer II</option>
+						      <option>Senior Police Officer I</option>
+						      <option>Police Officer III</option>
+						      <option>Police Officer II</option>
+						      <option>Police Officer I</option>
+						      <option>None/Admin</option>
+						    </select>
+							<small class="help-block" ng-show="regForm.rank.$invalid && regForm.rank.$touched">Please enter your Rank</small>
+						</div>
+
+						<!-- substation -->
+						<div class="form-group" ng-class="{'has-error': regForm.substation.$invalid && regForm.substation.$touched}">
+							<label for="substation">Substation</label>
+							<!-- <input type="text" name="substation" ng-model="user.substation" class="form-control" placeholder="Substation" required="" /> -->
+							<select name="substation" ng-model="user.substation" class="form-control" required="">
+						      <option>Parian Police Station (Station 1)</option>
+						      <option>Fuente Police Station (Station 2)</option>
+						      <option>WaterFront Police Station (Station 3)</option>
+						      <option>Mabolo Police Station (Station 4)</option>
+						      <option>Carbon Police Station (Station 5)</option>
+						      <option>San Nicolas Police Station (Station 6)</option>
+						      <option>Pardo Police Station (Station 7)</option>
+						      <option>Talamban Police Station (Station 8)</option>
+						      <option>Guadalupe Police Station (Station 9)</option>
+						      <option>Punta Prinsesa Police Station (Station 10)</option>
+						      <option>Mambaling Police Station (Station 11)</option>
+						      <option>Mobile Patrol Group (MPG)</option>
+						      <option>Traffic Patrol Group (TPG)</option>
+						      <option>Tourist Police Unit (TPU)</option>
+						    </select>
+							<small class="help-block" ng-show="regForm.substation.$invalid && regForm.substation.$touched">Please enter your substation</small>
+						</div>
+
+						<!-- superior officer -->
+						<div class="form-group" ng-class="{'has-error': regForm.superiorOfficer.$invalid && regForm.superiorOfficer.$touched}">
+							<label for="superiorOfficer">Superior Officer</label>
+							<input type="text" name="superiorOfficer" ng-model="user.superiorOfficer" class="form-control" placeholder="Superior Officer" required="" />
+							<small class="help-block" ng-show="regForm.superiorOfficer.$invalid && regForm.superiorOfficer.$touched">Please enter your Superior Officer</small>
+						</div>
+
+						<!-- email address -->
+						<div class="form-group" ng-class="{'has-error': regForm.email.$invalid && regForm.email.$touched}">
+							<label for="email">Email Address</label>
+							<input type="email" name="email" ng-model="user.email" class="form-control" placeholder="Email Address" required="" />
+							<small class="help-block" ng-show="regForm.email.$invalid && regForm.email.$touched">Please enter an Email Address</small>
+						</div>
+
+						<!-- password -->
+						<div class="form-group" ng-class="{'has-error': regForm.password.$invalid && regForm.password.$touched}">
+							<label for="password">Password</label>
+							<input type="password" name="password" ng-model="user.password" class="form-control" placeholder="Password" required="" ng-minlength = 8 />
+							<small class="help-block" ng-show="regForm.password.$error.minlength && regForm.password.$touched">Password must be atleast 8 characters.</small>
+						</div>
+
+						<div class="form-group" style="margin-top: 30px;">
+						<p ng-show="errMsg" style="color: red;">{{errorMessage}}</p>
+						<button type="submit" class="btn btn-lg btn-fill btn-success btn-block" ng-disabled="regForm.$invalid" ng-click="signUp()">Sign Up</button>
+						</div>
+					</form>
+                </div>
+                <div class="card-footer ">
+                  <hr>
+                  <div class="stats">
+                      <i class="fa fa-check"></i> Data information certified
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- add report card -->
+          </div>
+        </div>
+      </div>
+      <!-- footer here -->
+    </div>
+  </div>
+</body>
+</html>

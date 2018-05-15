@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Show Complaints</title>
+
+  <!-- TO LOAD ADMIN STUFF, COPY FROM HERE -->
+  <!-- CSS Files -->
+  <link href="../dashboard-assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../dashboard-assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+  <!-- SCRIPTS -->
+  <!--   Core JS Files   -->
+  <script src="dashboard-assets/js/core/jquery.3.2.1.min.js" type="text/javascript" defer></script>
+  <script src="dashboard-assets/js/core/popper.min.js" type="text/javascript" defer></script>
+  <script src="dashboard-assets/js/core/bootstrap.min.js" type="text/javascript" defer></script>
+  <!-- END COPY FOR ADMIN STUFF -->
+</head>
+
+<body ng-controller="ShowComplaintCtrl">
+
+<!-- wrapper -->
+  <div class="wrapper">
+  <!-- COPY FROM HERE FOR MENU -->
+    <!-- sidebar -->
+    <div class="sidebar" data-color="blue">
+        <!--
+    Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="#" class="simple-text">
+            <h3>CCPO</h3>
+          </a>
+        </div>
+        <ul class="nav">
+          <li>
+            <a class="nav-link" href="#/admin">
+              <i class="nc-icon nc-chart-pie-35"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#/profile">
+              <i class="nc-icon nc-single-copy-04"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link active" href="#/addAnnouncement">
+              <i class="nc-icon nc-paper-2"></i>
+              <p>Add Announcements</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#/register">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Register an Officer</p>
+            </a>
+          </li>
+          <li class="nav-item active" >
+            <a class="nav-link" href="#/showComplaint">
+              <i class="nc-icon nc-notes"></i>
+              <p>Complaints</p>
+            </a>
+          </li>
+
+          <li class="nav-item active-pro" ng-click=logout()>
+            <a class="nav-link active" href="#">
+              <i class="nc-icon nc-button-power"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end sidebar -->
+
+    <div class="main-panel">
+      <nav class="navbar navbar-expand-lg" color-on-scroll="500">
+        <div class=" container-fluid  ">
+          <h3>Complaints <a class="navbar-brand" href="#/profile">&lt{{username}}&gt</a></h3>
+          <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar burger-lines"></span>
+            <span class="navbar-toggler-bar burger-lines"></span>
+            <span class="navbar-toggler-bar burger-lines"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+  <!-- STOP HERE FOR MENU -->
+
+
+    <!-- PUT ALL CONTENTS HERE -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row" >
+            <!-- <div class="col-md-2"></div> -->
+            <!-- show report card -->
+            <div class="col-md-6"  ng-repeat="complaint in complaints">
+              <div class="card">
+                <div class="card-header ">
+                    <legend class="card-title">{{complaint.title}}</legend>
+                    <hr>
+                </div>
+                <div class="card-body " style="margin-left: 20px;">
+                  <!-- <h5 class="card-title">{{announcement.title}}</h5> -->
+                    <p class="card-text" style="margin-left: 0px;">
+                      <i class="nc-icon nc-watch-time"></i>
+                      &nbsp;Date: {{complaint.date}}
+                    </p>
+                    <hr>
+                  <!-- <h5 class="card-title">Substation</h5> -->
+                    <p class="card-text" style="margin-left: 0px; margin-top: 10px;">
+                      <i class="nc-icon nc-square-pin"></i>
+                      &nbsp;Place: {{complaint.place}}
+                    </p>
+                    <hr>
+                  <!-- <h5 class="card-title">Superior Officer</h5> -->
+                    <p class="card-text" style="margin-left: 0px; margin-top: 10px;">
+                      <i class="nc-icon nc-paper-2"></i>
+                      &nbsp;Description:
+                    </p>
+
+                    <p class="card-text" style="margin-left: 0px; margin-top: 10px; margin-bottom: 20px;">
+                      {{complaint.description}}
+                    </p>
+
+                    <hr>
+                  <a href="#/showReport" class="btn btn-danger btn-fill" ng-click="deleteComplaint(complaint)">
+                    <h5 class="card-title" style="color: white;">Delete</h5>
+                  </a>
+                </div>
+                <div class="card-footer ">
+                  <hr>
+                  <div class="stats">
+                      <i class="fa fa-check"></i> Data information certified
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- add complaint card -->
+          </div>
+        </div>
+      </div>
+      <!-- footer here -->
+    </div>
+  </div>
+
+</body>
+</html>

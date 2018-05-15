@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Show Complaints</title>
+
+</head>
+
+<body ng-controller="ShowComplaintCtrl">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a href="#" class="navbar-brand mb-0 h1">CCPO</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#/admin">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#/addAnnouncement">Add Announcements</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#/register">Register an Officer</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="#/showComplaint">Complaints</a>
+    </li>
+    <li class="nav-item" ng-click=logout()>
+      <a class="nav-link" href="#">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container" style="margin-bottom: 20px; margin-top: 20px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <h3>Complaints</h3>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<!-- complaints -->
+<div class="container">
+  <div class="card-columns" ng-repeat="complaint in complaints">
+    <div class="col-md-12 card">
+      <div class="card-body">
+        <h4 class="card-title">{{complaint.title}}</h4>
+        <p class="card-text">Date: {{complaint.date}}</p>
+        <p class="card-text">Place: {{complaint.place}}</p>
+        <p class="card-text">Description: {{complaint.description}}</p>
+        <button type="submit" class="btn btn-sm btn-danger" ng-click="deleteComplaint(complaint)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
